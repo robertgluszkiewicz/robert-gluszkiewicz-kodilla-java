@@ -8,18 +8,6 @@ public class ForumStatistics {
     private double averageQuantityCommentsPerUser;
     private double averageQuantityCommentsPerPost;
 
-    public ForumStatistics(int quantityUsers, int quantityPosts, int quantityComments, double averageQuantityPostsPerUser, double averageQuantityCommentsPerUser, double averageQuantityCommentsPerPost) {
-        this.quantityUsers = quantityUsers;
-        this.quantityPosts = quantityPosts;
-        this.quantityComments = quantityComments;
-        this.averageQuantityPostsPerUser = averageQuantityPostsPerUser;
-        this.averageQuantityCommentsPerUser = averageQuantityCommentsPerUser;
-        this.averageQuantityCommentsPerPost = averageQuantityCommentsPerPost;
-    }
-
-    public ForumStatistics() {
-    }
-
     public void calculateAdvStatistics(Statistics statistics) {
         quantityUsers = statistics.usersNames().size();
         quantityPosts = statistics.postsCount();
