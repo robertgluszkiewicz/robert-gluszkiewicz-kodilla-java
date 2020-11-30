@@ -1,9 +1,12 @@
 package com.kodilla.stream.portfolio;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -139,5 +142,28 @@ class BoardTestSuite {
 
         //Then
         assertEquals(2, longTasks);                                       // [9]
+    }
+
+    @DisplayName("Task 7.6")
+    @Test
+    void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        Long sumOfTheDaysOfTheTaskCompletion = project.getTaskLists().stream()
+                .filter(taskLists -> taskLists.getName().equals("In progress"))
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(task -> task.getCreated().until(LocalDate.now(), DAYS))
+                .reduce(0L, (sum, current) -> sum = sum + current);
+
+        Long numberOfTasks = project.getTaskLists().stream()
+                .filter(taskLists -> taskLists.getName().equals("In progress"))
+                .flatMap(taskList -> taskList.getTasks().stream()).count();
+
+        Long result = sumOfTheDaysOfTheTaskCompletion / numberOfTasks;
+
+        //Then
+        Assertions.assertEquals(10L, result);
     }
 }
