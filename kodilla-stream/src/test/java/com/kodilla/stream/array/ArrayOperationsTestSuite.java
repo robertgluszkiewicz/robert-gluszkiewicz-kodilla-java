@@ -3,7 +3,6 @@ package com.kodilla.stream.array;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.stream.IntStream;
 
 public class ArrayOperationsTestSuite {
     @DisplayName("Test checks calculate with range() method and IntStream interface")
@@ -16,17 +15,9 @@ public class ArrayOperationsTestSuite {
         }
 
         //When
-        double expectedResult = 9.5;
-        double result = IntStream.range(0, numbers.length)
-                .map(item -> numbers[item])
-                .average()
-                .getAsDouble();
-
-        IntStream.range(0, numbers.length)
-                .map(item -> numbers[item])
-                .forEach(v -> System.out.println(v));
+        double average = ArrayOperations.getAverage(numbers);
 
         //Then
-        Assertions.assertEquals(expectedResult, result);
+        Assertions.assertEquals(9.5, average);
     }
 }
