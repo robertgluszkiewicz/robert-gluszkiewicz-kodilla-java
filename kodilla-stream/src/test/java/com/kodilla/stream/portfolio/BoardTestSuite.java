@@ -128,12 +128,12 @@ class BoardTestSuite {
     @Test
     void testAddTaskListFindLongTasks() {
         //Given
-        Board project = prepareTestData();
+        Board board = prepareTestData();
 
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();               // [1]
         inProgressTasks.add(new TaskList("In progress"));                 // [2]
-        long longTasks = project.getTaskLists().stream()                  // [3]
+        long longTasks = board.getTaskLists().stream()                  // [3]
                 .filter(inProgressTasks::contains)                             // [4]
                 .flatMap(tl -> tl.getTasks().stream())                         // [5]
                 .map(Task::getCreated)                                         // [6]
@@ -161,9 +161,9 @@ class BoardTestSuite {
                 .filter(taskLists -> taskLists.getName().equals("In progress"))
                 .flatMap(taskList -> taskList.getTasks().stream()).count();
 
-        Long result = sumOfTheDaysOfTheTaskCompletion / numberOfTasks;
+        double result = (double)sumOfTheDaysOfTheTaskCompletion / (double)numberOfTasks;
 
         //Then
-        Assertions.assertEquals(10L, result);
+        Assertions.assertEquals(10, result);
     }
 }
