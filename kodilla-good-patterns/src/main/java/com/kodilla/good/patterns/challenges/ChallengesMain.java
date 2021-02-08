@@ -7,7 +7,7 @@ public class ChallengesMain {
 
         String movies = MovieStore.getMovies().entrySet().stream()
                 .flatMap(title -> title.getValue().stream())
-                .collect(Collectors.joining("!","", ""));
+                .collect(Collectors.joining("!"));
 
         System.out.println(movies);
     }
