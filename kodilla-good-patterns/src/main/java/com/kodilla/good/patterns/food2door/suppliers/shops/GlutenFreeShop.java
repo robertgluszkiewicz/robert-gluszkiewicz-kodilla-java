@@ -1,9 +1,11 @@
-package com.kodilla.good.patterns.food2door.suppliers;
+package com.kodilla.good.patterns.food2door.suppliers.shops;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class GlutenFreeShop implements Supplier{
+import com.kodilla.good.patterns.food2door.suppliers.Product;
+
+public class GlutenFreeShop implements Supplier {
 
     @Override
     public String getSupplierName() {

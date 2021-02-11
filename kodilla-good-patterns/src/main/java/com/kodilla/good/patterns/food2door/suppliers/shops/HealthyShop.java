@@ -1,13 +1,16 @@
-package com.kodilla.good.patterns.food2door.suppliers;
+package com.kodilla.good.patterns.food2door.suppliers.shops;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import com.kodilla.good.patterns.food2door.suppliers.OrderType;
+import com.kodilla.good.patterns.food2door.suppliers.Product;
+
 public class HealthyShop implements Supplier {
 
     @Override
-    public String getSupplierName() {
-        return "Healthy Shop";
+    public OrderType getSupplierName() {
+        return OrderType.HEALTHY_SHOP;
     }
 
     @Override
