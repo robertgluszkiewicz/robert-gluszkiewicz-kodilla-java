@@ -9,11 +9,11 @@ public class Flight {
     private LocalTime departureTime;
     private LocalTime arrivalTime;
 
-    public Flight(final Airport departure, final Airport arrival, final LocalTime departureTime, final LocalTime arricalTime) {
+    public Flight(final Airport departure, final Airport arrival, final LocalTime departureTime, final LocalTime arrivalTime) {
         this.departure = departure;
         this.arrival = arrival;
         this.departureTime = departureTime;
-        this.arrivalTime = arricalTime;
+        this.arrivalTime = arrivalTime;
     }
 
     public Airport getDeparture() {

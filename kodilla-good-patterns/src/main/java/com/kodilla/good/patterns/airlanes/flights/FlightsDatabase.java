@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class FlightsDatabase {
 
-    public Set<Flight> flightSet = new HashSet<>();
+    private final Set<Flight> flightSet = new HashSet<>();
 
     public Set<Flight> createFlightDatabase() {
 

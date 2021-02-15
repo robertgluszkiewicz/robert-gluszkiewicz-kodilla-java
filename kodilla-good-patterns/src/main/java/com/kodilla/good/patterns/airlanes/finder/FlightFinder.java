@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class FlightFinder {
 
-    FlightsDatabase flightsDatabase = new FlightsDatabase();
+    private final FlightsDatabase flightsDatabase = new FlightsDatabase();
 
     public Set<Flight> departureFinder(Airport departure) {
 
