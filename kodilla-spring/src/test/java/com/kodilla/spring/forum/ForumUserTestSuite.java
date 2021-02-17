@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class ForumUserTestSuite {
+public class        ForumUserTestSuite {
 
     @Test
     void testGetUsername() {
