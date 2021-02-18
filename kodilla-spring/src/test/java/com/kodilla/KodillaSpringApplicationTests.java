@@ -1,4 +1,4 @@
-package com.kodilla;
+package com.kodilla.spring.shape;
 
 import com.kodilla.spring.shape.Circle;
 import com.kodilla.spring.shape.Shape;
