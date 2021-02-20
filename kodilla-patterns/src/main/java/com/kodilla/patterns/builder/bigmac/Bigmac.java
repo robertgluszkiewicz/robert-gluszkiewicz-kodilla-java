@@ -6,7 +6,7 @@ import java.util.List;
 public class Bigmac {
 
     private final String bun;
-    private final int burgers;
+    private final int numberOfBurgers;
     private final String sauce;
     private List<String> ingredients;
 
@@ -42,24 +42,36 @@ public class Bigmac {
         }
     }
 
-        private Bigmac(String bun, int burgers, String sauce, List<String> ingredients) {
-            this.bun = bun;
-            this.burgers = burgers;
-            this.sauce = sauce;
-            this.ingredients = ingredients;
-        }
+    private Bigmac(String bun, int numberOfBurgers, String sauce, List<String> ingredients) {
+        this.bun = bun;
+        this.numberOfBurgers = numberOfBurgers;
+        this.sauce = sauce;
+        this.ingredients = ingredients;
+    }
 
-        public List<String> getIngredients() {
-            return ingredients;
-        }
+    public String getBun() {
+        return bun;
+    }
 
-        @Override
-        public String toString() {
-            return "BigmacBuilder{" +
-                    "bun='" + bun + '\'' +
-                    ", burgers=" + burgers +
-                    ", sauce='" + sauce + '\'' +
-                    ", ingredients=" + ingredients +
-                    '}';
-        }
+    public int getNumberOfBurgers() {
+        return numberOfBurgers;
+    }
+
+    public String getSauce() {
+        return sauce;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return "BigmacBuilder{" +
+                "bun='" + bun + '\'' +
+                ", burgers=" + numberOfBurgers +
+                ", sauce='" + sauce + '\'' +
+                ", ingredients=" + ingredients +
+                '}';
+    }
 }

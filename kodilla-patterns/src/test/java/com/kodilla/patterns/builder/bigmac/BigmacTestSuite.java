@@ -27,8 +27,14 @@ public class BigmacTestSuite {
 
         //When
         int ingredientsQuantity = bigmac.getIngredients().size();
+        int numberOfBurgers = bigmac.getNumberOfBurgers();
+        String bun = bigmac.getBun();
+        String sauce = bigmac.getSauce();
 
         //Then
         assertEquals(8, ingredientsQuantity);
+        assertEquals(3, numberOfBurgers);
+        assertEquals("sesame seed", bun);
+        assertEquals("barbecue", sauce);
     }
 }
