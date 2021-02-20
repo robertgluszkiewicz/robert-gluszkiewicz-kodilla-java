@@ -6,50 +6,45 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TaskFactoryTestSuite {
 
+    TaskFactory factory = new TaskFactory();
+    Task driving = factory.makeTask(TaskFactory.DRIVING);
+    Task painting = factory.makeTask(TaskFactory.PAINTING);
+    Task shopping = factory.makeTask(TaskFactory.SHOPPING);
+
     @Test
-    public void testFactoryDrivingTask() {
-
-        //Given
-        TaskFactory factory = new TaskFactory();
-
-        //When
-        Task driving = factory.makeTask(TaskFactory.DRIVING);
+    void testFactoryDrivingTask() {
 
         //Then
         assertNotNull(driving);
         assertEquals("Meet", driving.getTaskName());
-        assertFalse(driving.isTaskExecuted());
     }
 
     @Test
-    public void testFactoryPaintingTask() {
-
-        //Given
-        TaskFactory factory = new TaskFactory();
-
-        //When
-        Task painting = factory.makeTask(TaskFactory.PAINTING);
-        painting.executeTask();
+    void testFactoryPaintingTask() {
 
         //Then
         assertNotNull(painting);
         assertEquals("Basement renovation", painting.getTaskName());
-        assertTrue(painting.isTaskExecuted());
     }
 
     @Test
-    public void testFactoryShoppingTask() {
-
-        //Given
-        TaskFactory factory = new TaskFactory();
-
-        //When
-        Task shopping = factory.makeTask(TaskFactory.SHOPPING);
-        shopping.executeTask();
+    void testFactoryShoppingTask() {
 
         //Then
         assertNotNull(shopping);
         assertEquals("Soup for dinner", shopping.getTaskName());
+    }
+
+    @Test
+    void testExecutionTask() {
+
+        //When
+        painting.executeTask();
+        shopping.executeTask();
+
+        //Then
+        assertFalse(driving.isTaskExecuted());
+        assertTrue(painting.isTaskExecuted());
         assertTrue(shopping.isTaskExecuted());
     }
 }
