@@ -6,12 +6,11 @@ import java.time.LocalDate;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class LibraryTestSuite {
 
     @Test
-    void testGetBooks() {
+    void testGetBooks() throws CloneNotSupportedException {
 
         //Given
         Library library = new Library("Library");
@@ -31,12 +30,8 @@ public class LibraryTestSuite {
 
         //making a deep copy of object library
         Library deepClonedLibrary = null;
-        try {
-            deepClonedLibrary = library.deepCopy();
-            deepClonedLibrary.setName("Deep clone of library");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+        deepClonedLibrary = library.deepCopy();
+        deepClonedLibrary.setName("Deep clone of library");
 
         //When
         library.getBooks().add(new Book("Title-0", "Author-0", LocalDate.now().minusDays(50_000)));
@@ -48,6 +43,5 @@ public class LibraryTestSuite {
         assertEquals(4, library.getBooks().size());
         assertEquals(4, clonedLibrary.getBooks().size());
         assertEquals(3, deepClonedLibrary.getBooks().size());
-        assertNotEquals(deepClonedLibrary.getBooks(), library.getBooks());
     }
 }
