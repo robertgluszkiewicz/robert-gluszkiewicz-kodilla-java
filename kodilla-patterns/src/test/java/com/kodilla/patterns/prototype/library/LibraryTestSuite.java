@@ -20,17 +20,11 @@ public class LibraryTestSuite {
                         .add(new Book("Title-" + n, "Author-" + n, LocalDate.now().minusDays(n * 5_000))));
 
         //making a shallow copy of object library
-        Library clonedLibrary = null;
-        try {
-            clonedLibrary = library.shallowCopy();
-            clonedLibrary.setName("Shallow clone of library");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+        Library clonedLibrary = library.shallowCopy();
+        clonedLibrary.setName("Shallow clone of library");
 
         //making a deep copy of object library
-        Library deepClonedLibrary = null;
-        deepClonedLibrary = library.deepCopy();
+        Library deepClonedLibrary = library.deepCopy();
         deepClonedLibrary.setName("Deep clone of library");
 
         //When
