@@ -1,7 +1,6 @@
-package com.kodilla.hibernate;
+package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.Task;
-import com.kodilla.hibernate.task.dao.TaskDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +16,7 @@ public class TaskDaoTestSuite {
 
     @Autowired
     private TaskDao taskDao;
-    private static  final String DESCRIPTION = "Test: Learn Hibernate";
+    private static final String DESCRIPTION = "Test: Learn Hibernate";
 
     @Test
     void testTaskDaoSave() {
