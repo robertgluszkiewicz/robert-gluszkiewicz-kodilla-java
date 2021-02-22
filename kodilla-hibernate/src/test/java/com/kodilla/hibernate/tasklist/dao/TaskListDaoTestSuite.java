@@ -12,10 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class TaskListDaoTestSuite {
 
-    @Autowired
-    private TaskListDao taskListDao;
     private static final String LISTNAME = "Task in progress";
     private static final String DESCRIPTION = "Ongoing tasks assigned to a person";
+
+    @Autowired
+    private TaskListDao taskListDao;
 
     @Test
     void testFindByListName() {
