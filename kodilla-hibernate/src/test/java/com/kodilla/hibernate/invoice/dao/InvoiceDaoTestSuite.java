@@ -1,15 +1,11 @@
-/**
-
 package com.kodilla.hibernate.invoice.dao;
 
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
-import com.kodilla.hibernate.invoice.dao.InvoiceDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.math.BigDecimal;
 
 import static org.junit.Assert.assertNotEquals;
@@ -20,6 +16,12 @@ public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
 
+    @Autowired
+    private ItemDao itemDao;
+
+    @Autowired
+    private ProductDao productDao;
+
     @Test
     void testInvoiceDaoSave() {
 
@@ -28,29 +30,45 @@ public class InvoiceDaoTestSuite {
         Product milk = new Product("Mleko białe 2%");
         Product roll = new Product("Bułka graham z ziarnami");
 
-        Item item1 = new Item(chocolate, new BigDecimal(4.99), 2);
-        Item item2 = new Item(milk, new BigDecimal(2.85), 3);
-        Item item3 = new Item(roll, new BigDecimal(0.95), 8);
+        Item item1 = new Item(chocolate, new BigDecimal("4.92"), 2);
+        Item item2 = new Item(milk, new BigDecimal("2.81"), 3);
+        Item item3 = new Item(roll, new BigDecimal("0.81"), 10);
 
-        Invoice invoice = new Invoice("2021/02/28/123");
+        Invoice invoice1 = new Invoice("2021/02/28/101");
 
-        invoice.getItems().add(item1);
-        invoice.getItems().add(item2);
-        invoice.getItems().add(item3);
+        item1.setProduct(chocolate);
+        item2.setProduct(milk);
+        item3.setProduct(roll);
 
-        chocolate.getItems().add(item1);
-        milk.getItems().add(item2);
-        roll.getItems().add(item3);
+        item1.setInvoice(invoice1);
+        item2.setInvoice(invoice1);
+        item3.setInvoice(invoice1);
+
+        invoice1.getItems().add(item1);
+        invoice1.getItems().add(item2);
+        invoice1.getItems().add(item3);
 
         //When
-        invoiceDao.save(invoice);
-        int invoiceId = invoice.getId();
+        productDao.save(chocolate);
+        int chocolateId = chocolate.getId();
+        productDao.save(milk);
+        int milkId = milk.getId();
+        productDao.save(roll);
+        int rollId = roll.getId();
+        invoiceDao.save(invoice1);
+        int invoice1Id = invoice1.getId();
 
         //Then
-        assertNotEquals(0, invoiceId);
+        assertNotEquals(0, invoice1Id);
 
         //CleanUp
-        invoiceDao.deleteById(invoiceId);
+        try {
+            invoiceDao.deleteById(invoice1Id);
+            productDao.deleteById(chocolateId);
+            productDao.deleteById(milkId);
+            productDao.deleteById(rollId);
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }
-**/

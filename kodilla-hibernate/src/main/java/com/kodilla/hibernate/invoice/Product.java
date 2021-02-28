@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "PRODUCTS")
-public class Product {
+public final class Product {
 
     private int id;
     private String name;

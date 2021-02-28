@@ -15,19 +15,18 @@ import java.math.RoundingMode;
 
 @Entity
 @Table(name = "ITEMS")
-public class Item {
+public final class Item {
 
     private int id;
+    private Product product;
     private BigDecimal price;
     private int quantity;
-    private Product product;
     private Invoice invoice;
 
     @Transient
     private BigDecimal value;
 
     public Item() {
-
     }
 
     public Item(Product product, BigDecimal price, int quantity) {
@@ -39,9 +38,15 @@ public class Item {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
+    @Column(name = "ITEM_ID", unique = true)
     public int getId() {
         return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    public Product getProduct() {
+        return product;
     }
 
     @NotNull
@@ -57,17 +62,13 @@ public class Item {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    public Product getProduct() {
-        return product;
-    }
-
-    @ManyToOne
     @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
     }
 
+    @NotNull
+    @Column(name = "VALUE")
     public BigDecimal getValue() {
         value = price.multiply(BigDecimal.valueOf(quantity));
         value = value.setScale(2, RoundingMode.CEILING);
@@ -84,10 +85,6 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
     }
 
     public void setProduct(Product product) {
