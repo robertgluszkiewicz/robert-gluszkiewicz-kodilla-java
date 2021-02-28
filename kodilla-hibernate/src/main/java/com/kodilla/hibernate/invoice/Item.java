@@ -74,27 +74,27 @@ public class Item {
         return value;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setPrice(BigDecimal price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    private void setQuantity(int quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    private void setValue(BigDecimal value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
-    private void setProduct(Product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    private void setInvoice(Invoice invoice) {
+    public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
 }
