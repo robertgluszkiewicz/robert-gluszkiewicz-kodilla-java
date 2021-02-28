@@ -87,6 +87,10 @@ public final class Item {
         this.quantity = quantity;
     }
 
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
     public void setProduct(Product product) {
         this.product = product;
     }
