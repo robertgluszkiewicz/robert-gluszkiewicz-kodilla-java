@@ -34,13 +34,12 @@ public class EmployeeDaoTestSuite {
         List<Employee> employees = employeeDao.retrieveEmployeeByLastname("Kovalsky");
 
         //Then
-        try {
-            assertEquals(1, employees.size());
-        } finally {
-            //CleanUp
-            employeeDao.deleteById(johnSmithId);
-            employeeDao.deleteById(stephanieClarksonId);
-            employeeDao.deleteById(lindaKovalskyId);
-        }
+        assertEquals(1, employees.size());
+        assertEquals("Kovalsky", employees.get(0).getLastname());
+
+        //CleanUp
+        employeeDao.deleteById(johnSmithId);
+        employeeDao.deleteById(stephanieClarksonId);
+        employeeDao.deleteById(lindaKovalskyId);
     }
 }

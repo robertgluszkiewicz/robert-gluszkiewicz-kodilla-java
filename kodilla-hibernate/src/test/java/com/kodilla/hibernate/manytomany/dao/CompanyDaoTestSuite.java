@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertSame;
 
 @SpringBootTest
 class CompanyDaoTestSuite {
@@ -82,13 +83,12 @@ class CompanyDaoTestSuite {
         List<Company> companies = companyDao.retrieveCompanyNameBeginningWith("Sof");
 
         //Then
-        try {
-            assertEquals(1, companies.size());
-        } finally {
-            //CleanUp
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMastersId);
-            companyDao.deleteById(greyMatterId);
-        }
+        assertEquals(1, companies.size());
+        assertEquals("Software Machine", companies.get(0).getName());
+
+        //CleanUp
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMastersId);
+        companyDao.deleteById(greyMatterId);
     }
 }
