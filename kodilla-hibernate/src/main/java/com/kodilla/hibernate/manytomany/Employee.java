@@ -8,11 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Employee.retrieveEmployeeByLastname",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
