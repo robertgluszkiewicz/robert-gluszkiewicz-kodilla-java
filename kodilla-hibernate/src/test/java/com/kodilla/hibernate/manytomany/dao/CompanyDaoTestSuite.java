@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @SpringBootTest
@@ -58,5 +61,33 @@ class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
+    }
+
+    @Test
+    void testNamedQueryRetrieveCompanyNameBeginningWith() {
+
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMasters = new Company("Data Masters");
+        Company greyMatter = new Company("Grey Matter");
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMasters);
+        int dataMastersId = dataMasters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
+
+        //When
+        List<Company> companies = companyDao.retrieveCompanyNameBeginningWith("Sof");
+
+        //Then
+        assertEquals(1, companies.size());
+        assertEquals("Software Machine", companies.get(0).getName());
+
+        //CleanUp
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMastersId);
+        companyDao.deleteById(greyMatterId);
     }
 }
