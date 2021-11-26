@@ -4,7 +4,6 @@ Exercises done as part of the Java Developer course through the following progra
 - JDBC
 - MySQL
 - Hibernate
-- REST API
 - JUnit5
 - Mockito
 - SOLID/KISS/DRY
